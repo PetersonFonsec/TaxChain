@@ -1,0 +1,18 @@
+
+
+.button {
+    transition: var(--transition);
+    color: var(--font-color-dark);
+    padding: 14px 32px;
+    background-color: var(--contrast-color-2);
+    border-radius: var(--border-radius-1);
+    border: none;
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-md);
+    cursor: pointer;
+  }
+  
+  .button:hover {
+    background-color: var(--contrast-color-1);
+  }
+  
