@@ -9,10 +9,10 @@
     width: 100%;
     min-height: 100vh;
     flex: 1;
+}
 
-    strong {
-        color: var( --contrast-color-2);
-    }
+.page strong {
+    color: var( --contrast-color-2);
 }
   
 @media screen and (min-width: 780px) {
