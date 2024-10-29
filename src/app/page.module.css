@@ -1,24 +1,26 @@
-#page {
+.page {
   align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   margin: 0 auto;
-  padding: var(--space-2);
+  padding:  var(--space-4) var(--space-2);
   max-width: var(--grid);
   width: 100%;
   min-height: 100vh;
+  flex: 1;
 }
 
 @media screen and (min-width: 780px) {
-  #page {
+  .page {
     flex-direction: row;
     justify-content: space-between;
     min-height: 832px;
+    padding: var(--space-2);
   }
 }
 
-#page strong {
+.page strong {
   color: var( --contrast-color-2);
 }
 
@@ -119,6 +121,7 @@
   border: 1px solid var(--contrast-color-2);
   font-weight: var(--font-weight-medium);
   color: var( --font-color-primary);
+  width: 100%;
 }
 
 .button:hover {
@@ -133,12 +136,103 @@
 .footer {
   background-color: var(--background-color-ligth);
   color: var(--font-color-primary);
+  margin-top: var(--space-6);
   padding: var(--space-2);
   text-align: center;
+}
+
+@media screen and (min-width: 780px) {
+  .footer {
+    margin-top: var(--space-10);
+  }
 }
 
 .footer hr {
   margin: var(--space-2) auto;
   width: 100%;
   max-width: 620px;
+}
+
+.about {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding:  var(--space-4) var(--space-2);
+  max-width: var(--grid);
+  width: 100%;
+  margin: 0 auto;
+  flex: 1;
+}
+
+@media screen and (min-width: 780px) {
+  .about {
+    justify-content: space-between;
+  }
+}
+
+.about .title {
+  display: block;
+  text-align: center;
+  width: 100%;
+}
+
+.aboutList {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  list-style: none;
+  padding: 0;
+  width: 100%;
+}
+
+.aboutList li {
+  align-items: center;
+  color: var(--font-color-primary);
+  cursor: pointer;
+  display: flex;
+  font-weight: var(--font-weight-bold);
+  justify-content: flex-start;
+  position: relative;
+  width: 100%;
+}
+
+.aboutList li:not(:last-child) {
+  margin-bottom: var(--space-4);
+}
+
+.aboutListItem {
+  flex: 1;
+}
+
+.square {
+  align-items: center;
+  border: 1px solid var(--font-color-primary);
+  border-radius: var(--border-radius-1);
+  display: flex;
+  justify-content: center;
+  min-height: 32px;
+  min-width: 32px;
+  margin-right: var(--space-2);
+}
+
+.aboutListButton {
+  align-items: center;
+  border-radius: 100%;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  height: var(--space-5);
+  margin-left: var(--space-2);
+  position: relative;
+  transition: var(--transition);
+  width: var(--space-5);
+
+  &::after {
+    content: '-';
+    font-size: var(--font-size-lg);
+    color: var(--font-color-primary);
+  }
 }
