@@ -72,6 +72,7 @@
   .form {  
     margin-top: 0;
     width: 406px;
+    padding: var(--space-4)  var(--space-2);
   }
 }
 
@@ -115,7 +116,7 @@
   padding: var(--space-2);
   font-size: var(--font-size-md);
   border-radius: var(--border-radius-2);
-  border-color: var(--contrast-color-2);
+  border: 1px solid var(--contrast-color-2);
   font-weight: var(--font-weight-medium);
   color: var( --font-color-primary);
 }
@@ -127,4 +128,17 @@
 .form button {
   margin-top: var(--space-3);
   margin-bottom: var(--space-2);
+}
+
+.footer {
+  background-color: var(--background-color-ligth);
+  color: var(--font-color-primary);
+  padding: var(--space-2);
+  text-align: center;
+}
+
+.footer hr {
+  margin: var(--space-2) auto;
+  width: 100%;
+  max-width: 620px;
 }

@@ -43,6 +43,9 @@ export default function Home() {
       </main>
 
       <footer className={styles.footer}>
+        <span>Feito com 💛 por um dev curioso.</span>
+        <hr />
+        <span>© 2024 Peterson F. Simião. Todos os direitos reservados.</span>
       </footer>
     </>
   );
