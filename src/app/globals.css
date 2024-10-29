@@ -80,3 +80,12 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+/* commun classes */
+
+.title {
+  color: var( --font-color-primary);
+  font-size: var(--font-size-lgx);
+  font-family: var(--font-roboto-bold);
+  font-weight: var(--font-weight-bold);
+}
