@@ -20,9 +20,35 @@ const robotoBoldSans = localFont({
   weight: "900",
 });
 
+
 export const metadata: Metadata = {
   title: "TaxChain",
   description: "Não Complica! Faça Sua Analise de Cripto em Minutos.",
+  icons: 
+  [
+    { 
+      rel: "icon", 
+      sizes:"180x180", 
+      type:"image/png", 
+      url: "/favicons/android-chrome-512x512.png" 
+    }, 
+    { 
+      rel: "apple-touch-icon",
+      type:"image/png",
+      sizes:"32x32" ,
+      url: "/favicons/apple-touch-icon.png" 
+    }
+  ],
+  openGraph: {
+    type: "website",
+    url: "https://www.taxchain.com.br",
+    title: "TaxChain",
+    description: "Não Complica! Faça Sua Analise de Cripto em Minutos.",
+    siteName: "TaxChain",
+    images: [{
+      url: "/share.png",
+    }],
+  }
 };
 
 export default function RootLayout({
