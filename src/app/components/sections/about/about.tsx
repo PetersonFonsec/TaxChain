@@ -9,19 +9,34 @@ export default function AboutSection() {
 
           <ol className={styles.aboutList}>
             <FaqItem index={1} question="O que é TaxChain e como funciona ?">
-              resposta
+              <span>
+                As corretoras de <strong>criptomoedas</strong> são mercados digitais que permitem aos usuários comprar e vender criptomoedas como o <strong>Bitcoin</strong>, <strong>Ethereum</strong> e <strong>Tether</strong>. 
+                A corretora Binance é a maior corretora de criptomoedas por volume de trades.
+              </span>
             </FaqItem>
 
             <FaqItem index={2} question="O que é criptomoedas ?">
-              resposta
+              
+              <span>
+                As corretoras de <strong>criptomoedas</strong> são mercados digitais que permitem aos usuários comprar e vender criptomoedas como o <strong>Bitcoin</strong>, <strong>Ethereum</strong> e <strong>Tether</strong>. 
+                A corretora Binance é a maior corretora de criptomoedas por volume de trades.
+              </span>
             </FaqItem>
 
             <FaqItem index={3} question="O que é a bynance ?">
-              resposta
+              
+              <span>
+                As corretoras de <strong>criptomoedas</strong> são mercados digitais que permitem aos usuários comprar e vender criptomoedas como o <strong>Bitcoin</strong>, <strong>Ethereum</strong> e <strong>Tether</strong>. 
+                A corretora Binance é a maior corretora de criptomoedas por volume de trades.
+              </span>
             </FaqItem>
 
             <FaqItem index={4} question="O que é uma corretora de criptomoedas ?">
-              resposta
+              
+              <span>
+                As corretoras de <strong>criptomoedas</strong> são mercados digitais que permitem aos usuários comprar e vender criptomoedas como o <strong>Bitcoin</strong>, <strong>Ethereum</strong> e <strong>Tether</strong>. 
+                A corretora Binance é a maior corretora de criptomoedas por volume de trades.
+              </span>
             </FaqItem>
           </ol>
         </section>

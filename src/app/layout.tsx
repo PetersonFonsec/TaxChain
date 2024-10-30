@@ -133,6 +133,7 @@ export const metadata: Metadata = {
       url: "/share.png",
     }],
   },
+  
 };
 
 export const viewport: Viewport = {

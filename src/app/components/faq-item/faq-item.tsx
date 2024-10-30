@@ -1,18 +1,28 @@
 'use client';
 
+import { ReactElement, useState } from "react";
 import styles from "./faq-item.module.css";
 
 interface FaqParam {
-    children: string 
+    children: ReactElement 
     question: string
     index: number
 }
 
 export default function FaqItem({children, question, index}: FaqParam) {
-    const showAnswer = () => console.log("teste");
+    const [faqClass, setFaq] = useState(styles.faqItem);
+    const [toggle, setToggle] = useState(true);
+
+    const handleFaqClass = () => {
+        setFaq((current: string) => toggle ? current += ` ${styles.showAnswer}` : styles.faqItem);
+        setToggle(!toggle);
+    }
 
     return <>
-            <li onClick={showAnswer} className={styles.faqItem}>
+            <li 
+                className={faqClass}
+                onClick={handleFaqClass}
+            >
                 <span className={styles.faqItemContainer}>
                     <span className={styles.square}>
                         {index}
