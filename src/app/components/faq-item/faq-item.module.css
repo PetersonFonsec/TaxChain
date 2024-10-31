@@ -1,6 +1,6 @@
-:root {
+/* :host {
     --square-size: 32px;
-}
+} */
 
 .faqItem {
     display: flex;
@@ -26,8 +26,8 @@
     border-radius: var(--border-radius-1);
     display: flex;
     justify-content: center;
-    min-height: var(--square-size);
-    min-width: var(--square-size);
+    min-height: 32px;
+    min-width: 32px;
     margin-right: var(--space-2);
 }
 
@@ -41,11 +41,11 @@
     display: flex;
     font-size: 0;
     justify-content: center;
-    height: var(--square-size);
+    height: 32px;
     margin-left: var(--space-2);
     position: relative;
     transition: var(--transition);
-    width: var(--square-size);
+    width: 32px;
   
     &::after {
       content: '-';
@@ -56,7 +56,7 @@
 
 .answer {
     font-weight: 200;
-    padding-left: calc(var(--square-size) + var(--space-2));
+    padding-left: calc(32px + var(--space-2));
 }
 
 .answer strong {
