@@ -1,47 +1,25 @@
-import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
-import { PutObjectCommand, S3 } from '@aws-sdk/client-s3';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import fs from 'fs';
 
-// Configura o S3
-const s3 = new S3({
-  credentials: {
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
-  },
+import {
+    S3Client,
+    PutObjectCommand,
+} from "@aws-sdk/client-s3";
+import { NextResponse } from 'next/server';
 
-  region: process.env.AWS_REGION
+const s3Client = new S3Client({
+    region: process.env.AWS_REGION,
+    credentials: {
+        accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    },
 });
 
-export default async function POST(req, res) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ message: 'Método não permitido' });
-  }
-
-  try {
-    const { fileName, fileType } = req.body;
-
-    // Configura o S3 com as informações do arquivo
-    const params = {
-      Bucket: process.env.AWS_BUCKET_NAME,   // Nome do bucket S3
-      Key: `uploads/${fileName}`,            // Caminho e nome do arquivo no S3
-      Expires: 60,                           // Expira em 60 segundos
-      ContentType: fileType,                 // Tipo do conteúdo (ex: 'text/csv' para arquivos CSV)
-      ACL: 'public-read'                     // Permissões de leitura pública
-    };
-
-    // Obtém uma URL assinada do S3 para upload direto
-    const uploadURL = await getSignedUrl(s3, new PutObjectCommand(params), {
-      expiresIn: 1000 * 60 //   '/* add value from \'Expires\' from v2 call if present, else remove */'
-    });
-
-    res.status(200).json({ uploadURL });
-  } catch (error) {
-    console.error("Erro ao gerar a URL de upload: ", error);
-    res.status(500).json({ message: 'Erro ao gerar a URL de upload', error });
-  }
+async function handler(req, res) {
+    console.log(filePath.getDestination())
+    const bucketName = process.env.AWS_BUCKET_NAME;
+    return NextResponse.json({ msg: "DEU BOM"})
+    // uploadFile(filePath, bucketName, fileName);
 }
 
-export async function GET() {
-    return Response.json({
-        message: "TESTES "
-    })
-}
+export { handler as POST}

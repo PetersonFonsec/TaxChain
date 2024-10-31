@@ -10,36 +10,25 @@ const UploadComponent = () => {
   const handleUpload = async () => {
     if (!selectedFile) return alert("Selecione um arquivo primeiro!");
 
+    const formData = new FormData();
+    formData.append("file", selectedFile);
+
     // Solicita uma URL assinada
     const res = await fetch('/api/upload', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        fileName: selectedFile.name,
-        fileType: selectedFile.type,
-      }),
+      body: formData,
     });
 
-    const { uploadURL } = await res.json();
-
-    // Faz o upload direto para a URL assinada
-    await fetch(uploadURL, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': selectedFile.type,
-      },
-      body: selectedFile,
-    });
+    const result = await res.json();
+    console.log(result);
 
     alert("Upload realizado com sucesso!");
   };
 
   return (
     <div>
-      <input type="file" onChange={handleFileInput} />
-      <button onClick={handleUpload}>Upload para S3</button>
+      <input style={ {"display": "none" }} type="file" onChange={handleFileInput} />
+      <button  style={ {"display": "none" }} onClick={handleUpload}>Upload para S3</button>
     </div>
   );
 };
