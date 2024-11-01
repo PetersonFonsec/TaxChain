@@ -17,7 +17,7 @@ export default function LandPageSection() {
               </li>
 
               <li>
-                2 ° Preencha o formulário ao lado para receber o seu link, com  o uma pagina unica e exclusiva sua.
+                2 ° Preencha o formulário ao lado para receber o seu link, em uma pagina unica e exclusiva sua.
               </li>
 
               <li>

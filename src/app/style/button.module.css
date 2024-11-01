@@ -8,6 +8,8 @@
   font-weight: var(--font-weight-medium);
   font-size: var(--font-size-md);
   cursor: pointer;
+  min-width: 250px;
+  display: block;
 }
 
 .button:hover {

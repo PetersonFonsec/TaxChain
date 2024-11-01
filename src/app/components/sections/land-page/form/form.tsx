@@ -8,12 +8,10 @@ import input from "../../../../style/input.module.css";
 import { useState } from "react";
 
 export function Form() {
-  const [selectedFile, setSelectedFile] = useState<any>(null);
   const [isFormValid, setIsFormValid] = useState(false);
 
   const [formData, setFormData] = useState({
     email: '',
-    phone: '',
     file: '',
   });
 
@@ -21,25 +19,33 @@ export function Form() {
     const { name, value } = e.target;
     const newFormData = { ...formData, [name]: value };
     setFormData(newFormData);
-
-    const isComplete = newFormData.email.trim() !== '' && newFormData.phone.trim() !== '';
-    setIsFormValid(isComplete);
+    validForm();
   };
 
+  function validForm() {
+    const isComplete = 
+    formData.email.trim() !== '' && 
+    !!formData.file;
+
+    setIsFormValid(isComplete);
+  }
+
   const handleFileInput = (event: any) => {
-    setSelectedFile(event.target.files[0]);
-    handleSubmit();
+    const newFormData = { ...formData, file: event.target.files[0] };
+    setFormData(newFormData);
+    validForm();
   };
 
   const handleSubmit = async (e?: any) => {
-    e.preventDefault();
+    e?.preventDefault();
     
-    const formData = new FormData();
-    formData.append("file", selectedFile);
+    const body = new FormData();
+    body.append("file", formData.file);
+    body.append("email", formData.email);
 
     const res = await fetch("/api/upload", {
       method: "POST",
-      body: formData,
+      body: body,
     });
 
     await res.json();
@@ -62,19 +68,7 @@ export function Form() {
         />
       </label>
 
-      <label htmlFor="celphone">
-        <input
-          type="tel"
-          id="phone"
-          name="phone"
-          value={formData.phone}
-          onChange={handleChange}
-          required
-          className={input.input}
-          placeholder="Telefone"
-        />
-      </label>
-
+      <label htmlFor="file">
       <input
         type="file"
         className={input.file}
@@ -84,14 +78,16 @@ export function Form() {
         required
         onChange={handleFileInput}
       />
+      <span role="button"
+        className={button.button}>
+        Upload do extrato
+      </span>
+      </label>
 
       <button  
         type="submit" 
-        onClick={
-          () => document.getElementById("file")?.click()  
-        }
         disabled={!isFormValid} className={button.button}>
-        Upload do extrato
+        Enviar
       </button>
 
       <legend>
