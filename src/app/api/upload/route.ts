@@ -4,6 +4,7 @@ import uploadFile from "../../services/bucket";
 import {insertInDynamoDb} from "../../services/db";
 
 export async function POST(req: Request) {
+  // 1° Recuperando o arquico csv
   const formData = await req.formData();
   const file = formData.get("file") as File;
 
@@ -16,13 +17,18 @@ export async function POST(req: Request) {
     );
   }
 
+  // 2° salvando no s3
   const buffer = await file.arrayBuffer();
   const id = uuidv4();
   const fileHash = `${id}.csv`;
 
   uploadFile(Buffer.from(buffer), fileHash);
 
+  // 3° salvando a relação entre email e arquivo no dynamodb
   await insertInDynamoDb(id, fileHash, formData.get("email"));
+
+  
+  // 4° enviando um email com o hash unico
 
   return Response.json(
     {

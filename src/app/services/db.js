@@ -12,7 +12,7 @@ const docClient = DynamoDBDocumentClient.from(client);
 
 export const insertInDynamoDb = async (id, fileHash, email) => {
   const command = new PutCommand({
-    TableName: "TAXCHAIN",
+    TableName: process.env.AWS_DYNAMO_TABLE,
     Item: {
       id,
       email,

@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 
+import { GoogleAnalytics } from '@next/third-parties/google';
+
 const robotoRegularSans = localFont({
   src: "./fonts/roboto/Roboto-Regular.ttf",
   variable: "--font-roboto-regular",
@@ -150,6 +152,7 @@ export default function RootLayout({
       <body className={`${robotoRegularSans.variable} ${robotoMediumSans.variable} ${robotoBoldSans.variable}`}>
         {children}
       </body>
+      <GoogleAnalytics gaId={process.env.GA_ID as string} />
     </html>
   );
 }
