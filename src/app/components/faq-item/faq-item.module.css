@@ -59,6 +59,7 @@
     padding-left: calc(32px + var(--space-2));
 }
 
+.answer a,
 .answer strong {
     color: var(--font-color-contrast);
 }

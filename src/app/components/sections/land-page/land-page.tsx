@@ -17,11 +17,11 @@ export default function LandPageSection() {
               </li>
 
               <li>
-                2 ° Preencha o formulário ao lado para receber o seu link, em uma pagina unica e exclusiva sua.
+                2 ° Preencha o formulário ao lado, com o seu email e anexe seu extrato fornecido pela corretora.
               </li>
 
               <li>
-              <strong>3° Pronto! </strong>Agora é só aguardar que enviaremos por email um link com acesso  valido durante 3 dias.
+              <strong>3° Pronto! </strong>Agora é só aguardar que enviaremos por email um link com acesso válido durante 3 dias.
               </li>
             </ol>
           </div>

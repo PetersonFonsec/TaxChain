@@ -71,14 +71,15 @@ body {
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background-color-normal);
-  font-family: var(--font-roboto-medium);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: var(--font-size-md);
+  background: var(--background-color-normal);
+  color: var(--foreground);
   display: flex;
   flex-direction: column;
+  font-family: var(--font-roboto-medium);
+  font-size: var(--font-size-md);
+  line-height: 150%;
 }
 
 /* commun classes */
@@ -88,4 +89,5 @@ body {
   font-size: var(--font-size-lgx);
   font-family: var(--font-roboto-bold);
   font-weight: var(--font-weight-bold);
+  line-height: initial;
 }
