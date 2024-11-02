@@ -82,6 +82,9 @@ body {
   line-height: 150%;
 }
 
+main {
+  flex: 1;
+}
 /* commun classes */
 
 .title {
