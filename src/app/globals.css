@@ -94,3 +94,14 @@ main {
   font-weight: var(--font-weight-bold);
   line-height: initial;
 }
+
+
+@keyframes spinner {
+  from {
+      transform: rotate(-360);
+  }
+
+  to {
+      transform: rotate(0);
+  }
+}
