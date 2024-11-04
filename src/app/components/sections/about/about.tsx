@@ -32,15 +32,18 @@ export default function AboutSection() {
 
             <FaqItem index={3} question="O que é criptomoedas ?">
               <span>
-                As corretoras de <strong>criptomoedas</strong> são mercados digitais que permitem aos usuários comprar e vender criptomoedas como o <strong>Bitcoin</strong>, <strong>Ethereum</strong> e <strong>Tether</strong>. 
-                A corretora Binance é a maior corretora de criptomoedas por volume de trades.
+                Criptomoedas são moedas digitais descentralizadas que utilizam criptografia 
+                para garantir transações seguras e privadas, operando sem a necessidade de 
+                intermediários como bancos. A maioria usa a tecnologia blockchain para registrar 
+                transações de forma pública e imutável. Exemplos populares incluem Bitcoin e 
+                Ethereum, que oferecem tanto um meio de pagamento quanto 
+                uma oportunidade de investimento.
               </span>
             </FaqItem>
 
             <FaqItem index={4} question="O que é uma corretora de criptomoedas ?">
               <span>
-                As corretoras de <strong>criptomoedas</strong> são mercados digitais que permitem aos usuários comprar e vender criptomoedas como o <strong>Bitcoin</strong>, <strong>Ethereum</strong> e <strong>Tether</strong>. 
-                A corretora Binance é a maior corretora de criptomoedas por volume de trades.
+              Uma corretora de criptomoedas é uma plataforma que facilita a compra, venda e negociação de criptomoedas, conectando compradores e vendedores. Existem corretoras centralizadas (como Binance) que oferecem segurança e suporte, mas exigem confiança na plataforma, e descentralizadas (como Uniswap), que operam diretamente entre usuários. Essas corretoras também oferecem serviços adicionais, como staking e empréstimos de criptomoedas.
               </span>
             </FaqItem>
           </ol>
