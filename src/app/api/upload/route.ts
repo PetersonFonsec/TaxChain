@@ -32,7 +32,7 @@ export async function POST(req: Request) {
   
   // 4° enviando um email com o hash unico
   const resend = new Resend(process.env.EMAIL_TOKEN);
-  const link = `${process.env.DOMAIN_URL}/${id}`;
+  const link = `${process.env.DOMAIN_URL}/dashboard/${id}`;
 
   resend.emails.send({
     from: `${process.env.EMAIL_FROM_NAME} <${process.env.EMAIL_FROM_EMAIL}>`,
