@@ -26,6 +26,8 @@ async function uploadFile(fileStream, Key) {
 }
 
 export async function getFile(Key) {
+  console.log("Começando a baixar o arquivo csv");
+
   const s3Client = new S3Client({
     region: process.env.AWS_REGION,
     credentials: {
@@ -42,7 +44,7 @@ export async function getFile(Key) {
   const command = new GetObjectCommand(input);
 
   try {
-    const response = await s3Client.send(command);
+    const response = (await s3Client.send(command)).Body;
     console.log("Download realizado com sucesso");
     return response;
   } catch (error) {

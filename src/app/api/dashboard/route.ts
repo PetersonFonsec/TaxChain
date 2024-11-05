@@ -1,7 +1,9 @@
-import { getFile } from "@/app/services/bucket";
-import { getInDynamoDb } from "@/app/services/db";
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
+import { getFile } from "@/app/services/bucket";
+import { getInDynamoDb } from "@/app/services/db";
+import { parse } from "papaparse";
+
 export async function POST(req: Request) {
   const formData = await req.formData();
   const slug = formData.get("slug") as string;
@@ -9,7 +11,7 @@ export async function POST(req: Request) {
   try {
     const result = await getInDynamoDb(slug);
     const item = result.Item?.fileHash ?? ""
-    if(!item) {
+    if (!item) {
       return Response.json(
         {
           msg: `Não foi encontrado nenhum arquivo com esse id: ${slug}`,
@@ -21,8 +23,18 @@ export async function POST(req: Request) {
     }
 
     const csv = await getFile(item);
-    console.log(csv);
-    // csv?.Body
+    const csvString = await csv?.transformToString();
+
+    const resultCSV = parse(csvString as string, {
+      header: true,
+      skipEmptyLines: true,
+    });
+
+    return Response.json(resultCSV,
+      {
+        status: 200,
+      }
+    );
 
   } catch (e: any) {
     return Response.json(
@@ -34,13 +46,4 @@ export async function POST(req: Request) {
       }
     );
   }
-
-  return Response.json(
-    {
-      msg: "deu bom",
-    },
-    {
-      status: 200,
-    }
-  );
 }
