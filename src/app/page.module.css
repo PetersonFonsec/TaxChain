@@ -1,0 +1,9 @@
+.page {
+  margin-bottom: var(--space-6);
+}
+
+@media screen and (min-width: 780px) {
+  .page {
+    margin-bottom: var(--space-10);
+  }
+}

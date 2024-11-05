@@ -1,18 +1,18 @@
 /* variebles */
 :root {
-  --neutral-color-1: #EAECEF;
-  --neutral-color-2: #2B3139;
-  --neutral-color-3: #181A20;
+  --neutral-color-1: #eaecef;
+  --neutral-color-2: #2b3139;
+  --neutral-color-3: #181a20;
   --neutral-color-4: #000000;
 
-  --contrast-color-1: #FCD535;
-  --contrast-color-2: #F0B90B;
-  
-  --success-color-1: #0ECB81;
+  --contrast-color-1: #fcd535;
+  --contrast-color-2: #f0b90b;
+
+  --success-color-1: #0ecb81;
   --success-color-2: #102821;
-  
-  --success-color-1: #FF707E;
-  --success-color-2: #F6465D;
+
+  --success-color-1: #ff707e;
+  --success-color-2: #f6465d;
 
   --background-color-normal: var(--neutral-color-3);
   --background-color-ligth: var(--neutral-color-2);
@@ -22,8 +22,8 @@
   --font-color-dark: var(--neutral-color-4);
 
   --font-size-md: 16px;
-  --font-size-lgx: 28px;
   --font-size-lg: 24px;
+  --font-size-lgx: 28px;
 
   --font-weight-regular: 400;
   --font-weight-medium: 700;
@@ -46,7 +46,7 @@
 
   --grid: 1060px;
 
-  --transition: .2s linear all;
+  --transition: 0.2s linear all;
 }
 
 @media screen and (min-width: 780px) {
@@ -85,23 +85,18 @@ body {
 main {
   flex: 1;
 }
-/* commun classes */
 
+/* commun classes */
+.text,
 .title {
-  color: var( --font-color-primary);
+  color: var(--font-color-primary);
   font-size: var(--font-size-lgx);
   font-family: var(--font-roboto-bold);
   font-weight: var(--font-weight-bold);
   line-height: initial;
 }
 
-
-@keyframes spinner {
-  from {
-      transform: rotate(-360);
-  }
-
-  to {
-      transform: rotate(0);
-  }
+.text {
+  font-size: var(--font-size-md);
 }
+
