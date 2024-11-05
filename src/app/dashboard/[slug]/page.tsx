@@ -1,12 +1,33 @@
 "use client";
 import style from "./dashboard.module.css";
 import FooterSection from "../../components/sections/footer/footer";
+import Loading from "../../components/loading/loading";
 
 import { useParams } from "next/navigation";
+import { useState } from "react";
 
 export default function Dashboard() {
   const params = useParams<{ slug: string }>();
-  console.log(params.slug);
+  const [isLoading, toggleLoading] = useState(false);
+
+  getInfos(params.slug);
+
+  async function getInfos(slug: string) {
+    try {
+      const form = new FormData();
+      form.append("slug", slug);
+
+      await fetch(`/api/dashboard`, {
+        method: "POST",
+        body: form
+      });
+  
+     }catch (e: any) {
+      console.log(e);
+    } finally {
+      toggleLoading(false);
+    }
+  }
 
   return (
     <>
@@ -80,6 +101,7 @@ export default function Dashboard() {
             </div>
           </div>
         </section>
+        { isLoading ? <Loading /> : ""}
       </main>
       <FooterSection />
     </>
