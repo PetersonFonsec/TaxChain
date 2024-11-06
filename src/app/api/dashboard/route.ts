@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { getFile } from "@/app/services/bucket";
 import { getInDynamoDb } from "@/app/services/db";
+import { generateTrade, generateReport } from "../../services/analisis";
 import { parse } from "papaparse";
 
 export async function POST(req: Request) {
@@ -25,12 +26,15 @@ export async function POST(req: Request) {
     const csv = await getFile(item);
     const csvString = await csv?.transformToString();
 
-    const resultCSV = parse(csvString as string, {
+    const resultCSV = parse<any>(csvString as string, {
       header: true,
       skipEmptyLines: true,
-    });
+    }).data;
 
-    return Response.json(resultCSV,
+    const trades = resultCSV.map(generateTrade);
+    const report = generateReport(trades);
+
+    return Response.json(report,
       {
         status: 200,
       }
