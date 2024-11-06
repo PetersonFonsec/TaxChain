@@ -7,10 +7,12 @@ import input from "../../../../style/input.module.css";
 import Loading from "../../../loading/loading";
 
 import { useEffect, useState } from "react";
+import DialogSuccess from "@/app/components/dialog-success/dialog-success";
 
 export function Form() {
   const [isFormValid, setIsFormValid] = useState(false);
   const [isLoading, toggleLoading] = useState(false);
+  const [dialogSuccess, toggleDialogSuccess] = useState(false);
 
   const [formData, setFormData] = useState({
     email: "",
@@ -49,6 +51,7 @@ export function Form() {
       });
 
       await res.json();
+      toggleDialogSuccess(true);
     } catch (e: any) {
       console.log(e);
     } finally {
@@ -95,8 +98,9 @@ export function Form() {
       <legend>
         Por enquanto funcionamos apenas com o formato de extrato da bynance.
       </legend>
-      
-      { isLoading ? <Loading /> : ""}
+
+      {isLoading ? <Loading /> : ""}
+      {dialogSuccess ? <DialogSuccess /> : ""}
     </form>
   );
 }
