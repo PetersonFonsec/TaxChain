@@ -21,4 +21,4 @@ jobs:
         cd ./terraform
         terraform init
         terraform validate
-        terraform plans  
+        terraform plan
