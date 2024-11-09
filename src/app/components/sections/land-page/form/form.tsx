@@ -8,11 +8,13 @@ import Loading from "../../../loading/loading";
 
 import { useEffect, useState } from "react";
 import DialogSuccess from "@/app/components/dialog-success/dialog-success";
+import DialogError from "@/app/components/dialog-error/dialog-error";
 
 export function Form() {
+  const [dialogSuccess, toggleDialogSuccess] = useState(false);
+  const [dialogError, toggleDialogError] = useState(false);
   const [isFormValid, setIsFormValid] = useState(false);
   const [isLoading, toggleLoading] = useState(false);
-  const [dialogSuccess, toggleDialogSuccess] = useState(false);
 
   const [formData, setFormData] = useState({
     email: "",
@@ -51,9 +53,12 @@ export function Form() {
       });
 
       await res.json();
-      toggleDialogSuccess(true);
+
+      toggleDialogError(true);
+      toggleDialogSuccess(false);
     } catch (e: any) {
       console.log(e);
+      toggleDialogError(true);
     } finally {
       toggleLoading(false);
     }
@@ -101,6 +106,7 @@ export function Form() {
 
       {isLoading ? <Loading /> : ""}
       {dialogSuccess ? <DialogSuccess /> : ""}
+      {dialogError ? <DialogError /> : ""}
     </form>
   );
 }
