@@ -15,7 +15,7 @@ jobs:
         shell: bash
     steps:
     - name: Navegation to Terraform Directory
-      run: cd terraforms
+      run: cd ./terraforms
     - name: Checkout
       uses: actions/checkout@v4
     - name: Terraform Plan
