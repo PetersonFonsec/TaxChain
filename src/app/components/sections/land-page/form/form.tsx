@@ -54,8 +54,8 @@ export function Form() {
 
       await res.json();
 
-      toggleDialogError(true);
-      toggleDialogSuccess(false);
+      toggleDialogError(false);
+      toggleDialogSuccess(true);
     } catch (e: any) {
       console.log(e);
       toggleDialogError(true);
