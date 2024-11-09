@@ -1,0 +1,28 @@
+name: 'Terraform Plan'
+
+on: push
+env:
+  AWS_REGION: ${{ secret.AWS_REGION}}
+  AWS_ACCESS_KEY_ID: ${{ secret.AWS_ACCESS_KEY_ID}}
+  AWS_SECRET_ACCESS_KEY: ${{ secret.AWS_SECRET_ACCESS_KEY}}
+  
+jobs:
+  terraform_plan:
+    name: Terraform Plan
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Terraform Plan
+      run: |
+        terraform init
+        terraform validate
+        terraform plpan
+
+
+
+
+  
