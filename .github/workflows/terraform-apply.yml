@@ -6,8 +6,8 @@ env:
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   
 jobs:
-  terraform_plan:
-    name: Terraform Plan
+  terraform_apply:
+    name: Terraform Apply
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -15,12 +15,7 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4
-    - name: Terraform Plan
+    - name: Terraform Apply
       run: |
-        terraform init
-        terraform Apply -auto-aprove
-
-
-
-
-  
+        cd ./terraform
+        terraform apply -auto-aprove
