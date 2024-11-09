@@ -1,23 +1,12 @@
-resource "aws_dynamodb_table" "Taxchain_table" {
-  name           = var.dynamodb
+resource "aws_dynamodb_table" "TAXCHAIN" {
+  name           = "TAXCHAIN"
   billing_mode   = "PROVISIONED"
-  read_capacity  = 20
-  write_capacity = 20
+  read_capacity  = 10
+  write_capacity = 10
   hash_key       = "id"
-  range_key      = "GameTitle"
 
   attribute {
     name = "id"
-    type = "S"
-  }
-
-  attribute {
-    name = "email"
-    type = "S"
-  }
-
-  attribute {
-    name = "fileHash"
     type = "S"
   }
 
@@ -27,7 +16,6 @@ resource "aws_dynamodb_table" "Taxchain_table" {
   }
 
   tags = {
-    Name        = "dynamodb-table-1"
-    Environment = "production"
+    Name        = "TAXCHAIN"
   }
 }
