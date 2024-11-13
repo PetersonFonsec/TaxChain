@@ -8,7 +8,7 @@ export default function List({ title, list }: any) {
       <span className="text">{title}</span>
 
       <ul>
-        {Object.keys(list).map((field: any, index: any) => (
+        {list && Object.keys(list).map((field: any, index: any) => (
           <li key={index}>
             {field} <strong>{list[field].toFixed(2)}</strong>
           </li>

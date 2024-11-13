@@ -60,15 +60,19 @@ export default function Dashboard() {
           </div>
 
           <div id={style.container}>
-            <List
-              list={resume.taxasTotais}
-              title="Quais moedas mais deram lucro"
-            />
+            {resume?.taxasTotais && (
+              <List
+                list={resume.taxasTotais}
+                title="Quais moedas mais deram lucro"
+              />
+            )}
 
-            <List
-              list={resume.taxasTotais}
-              title="Quantidade Total de taxas pagas"
-            />
+            {resume?.taxasTotais && (
+              <List
+                list={resume.taxasTotais}
+                title="Quantidade Total de taxas pagas"
+              />
+            )}
           </div>
 
           <div id={style.rule} className={style.container}>
