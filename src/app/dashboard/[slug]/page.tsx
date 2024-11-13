@@ -1,32 +1,42 @@
 "use client";
-import style from "./dashboard.module.css";
+
 import FooterSection from "../../components/sections/footer/footer";
 import Loading from "../../components/loading/loading";
+import List from "../../components/list/list";
+import Box from "../../components/box/box";
+import style from "./dashboard.module.css";
 
+import { DashboardResponse } from "@/app/model/DasboardResponse";
 import { useParams } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Dashboard() {
   const params = useParams<{ slug: string }>();
   const [isLoading, toggleLoading] = useState(false);
+  const [resume, setResume] = useState<DashboardResponse>(null as any);
 
-  getInfos(params.slug);
+  useEffect(() => {
+    getInfos(params.slug);
+  }, []);
 
   async function getInfos(slug: string) {
-    try {
-      const form = new FormData();
-      form.append("slug", slug);
+    const form = new FormData();
+    form.append("slug", slug);
+    toggleLoading(true);
 
-      await fetch(`/api/dashboard`, {
-        method: "POST",
-        body: form
+    fetch(`/api/dashboard`, {
+      method: "POST",
+      body: form,
+    })
+      .then(async (e) => {
+        toggleLoading(false);
+        const result = await e.json();
+        setResume(result);
+      })
+      .catch((e: Response) => {
+        toggleLoading(false);
+        if (e.status === 404) return window.location.assign("/");
       });
-  
-     }catch (e: any) {
-      console.log(e);
-    } finally {
-      toggleLoading(false);
-    }
   }
 
   return (
@@ -38,57 +48,27 @@ export default function Dashboard() {
 
         <section>
           <div id={style.aside} className={style.container}>
-            <div className={style.box}>
-              <span className="text">quantidade de trades feitas</span>
+            <Box title="quantidade de trades feitas">{resume?.totalTrades}</Box>
 
-              <span className={style.value}>13K</span>
-            </div>
+            <Box title="Quantidade de rejuizo Total">
+              {resume?.lucroPrejuizoTotal.toFixed(2)}
+            </Box>
 
-            <div className={style.box}>
-              <span className="text">quantidade de taxa paga</span>
-
-              <span className={style.value}>R$ 1</span>
-            </div>
-
-            <div className={style.box}>
-              <span className="text">volume de dinheiro movimentado</span>
-
-              <span className={style.value}>R$ 1</span>
-            </div>
+            <Box title="lucroPrejuizoTotal">
+              {resume?.maiorPrejuizo.toFixed(2)}
+            </Box>
           </div>
 
           <div id={style.container}>
-            <div className={style.list}>
-              <span className="text">Quais moedas mais deram lucro</span>
+            <List
+              list={resume.taxasTotais}
+              title="Quais moedas mais deram lucro"
+            />
 
-              <ul>
-                <li>
-                  SOLUSDT <strong>120%</strong>
-                </li>
-                <li>
-                  ETHBRL <strong>120%</strong>
-                </li>
-                <li>
-                  SOLBRL <strong>120%</strong>
-                </li>
-              </ul>
-            </div>
-
-            <div className={style.list}>
-              <span className="text">Quais moedas mais deram prejuizo</span>
-
-              <ul>
-                <li>
-                  SOLUSDT <strong>120%</strong>
-                </li>
-                <li>
-                  ETHBRL <strong>120%</strong>
-                </li>
-                <li>
-                  SOLBRL <strong>120%</strong>
-                </li>
-              </ul>
-            </div>
+            <List
+              list={resume.taxasTotais}
+              title="Quantidade Total de taxas pagas"
+            />
           </div>
 
           <div id={style.rule} className={style.container}>
@@ -101,7 +81,8 @@ export default function Dashboard() {
             </div>
           </div>
         </section>
-        { isLoading ? <Loading /> : ""}
+
+        {isLoading ? <Loading /> : ""}
       </main>
       <FooterSection />
     </>

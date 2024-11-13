@@ -11,7 +11,8 @@ export async function POST(req: Request) {
 
   try {
     const result = await getInDynamoDb(slug);
-    const item = result.Item?.fileHash ?? ""
+    const item = result.Item?.fileHash ?? "";
+
     if (!item) {
       return Response.json(
         {
@@ -41,6 +42,7 @@ export async function POST(req: Request) {
     );
 
   } catch (e: any) {
+    console.log(e);
     return Response.json(
       {
         msg: `Não foi encontrado nenhum registro com esse id: ${slug}`,

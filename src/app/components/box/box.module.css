@@ -1,0 +1,14 @@
+.box {
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+}
+
+.value {
+  color: var(--font-color-contrast);
+  font-size: var(--font-size-lgx);
+  font-family: var(--font-roboto-bold);
+  font-weight: var(--font-weight-bold);
+  line-height: initial;
+}

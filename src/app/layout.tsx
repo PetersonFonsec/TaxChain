@@ -121,8 +121,8 @@ export const metadata: Metadata = {
     }, 
     { 
       rel: "manifest", 
-      url: "/manifest.json",
-      href: "/manifest.json"
+      url: "/favicons/manifest.json",
+      href: "/favicons/manifest.json"
     }, 
   ],
   openGraph: {

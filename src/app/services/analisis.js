@@ -18,7 +18,7 @@ export function generateReport(trades) {
   const operacoes = trades.reduce((acc, trade) => {
     if (!acc[trade.pair]) acc[trade.pair] = { compras: 0, vendas: 0 };
     if (trade.side === "BUY") {
-      acc[trade.ppair].compras += trade.operationValue;
+      acc[trade.pair].compras += trade.operationValue;
     } else {
       acc[trade.pair].vendas += trade.operationValue;
     }
