@@ -1,32 +1,19 @@
-.dashboard {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  margin: 0 auto;
-  padding: var(--space-4) var(--space-2);
-  max-width: var(--grid);
-  text-align: center;
-  width: 100%;
-  flex: 1;
-}
-
-.dashboard section {
+#single {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
   gap: var(--space-2);
+  width: 100%;
 }
 
 @media screen and (min-width: 768px) {
-  .dashboard section {
-    grid-template-columns: repeat(4, 1fr);
+  #single {
+    grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repeat(1, 1fr);
   }
 }
 
 .header {
-  width: 100%;
   margin-bottom: var(--space-4);
 }
 
@@ -43,6 +30,15 @@
   justify-content: center;
   padding: var(--space-2);
   border-radius: var(--border-radius-3);
+  list-style: none;
+}
+
+.container li {
+  cursor: pointer;
+}
+
+.container li:not(:last-child) {
+  margin-bottom: var(--space-4);
 }
 
 @media screen and (min-width: 768px) {
@@ -66,12 +62,12 @@
 @media screen and (min-width: 768px) {
   #container {
     grid-column-start: 2;
-    grid-column-end: 4;
+    grid-column-end: 6;
     grid-row-start: 1;
   }
 }
 
-#container >div:not(:last-child) {
+#container > div:not(:last-child) {
   margin-bottom: var(--space-4);
 }
 
@@ -83,45 +79,27 @@
 @media screen and (min-width: 768px) {
   #aside {
     grid-column-start: 1;
+    grid-column-end: 1;
     grid-row-start: 1;
     grid-row-end: 3;
   }
 }
 
-#aside >*:not(:last-child) {
-  margin-bottom: var(--space-6);
-}
-
 #rule {
+  list-style: none;
   grid-column-start: 2;
   grid-row-start: 1;
 }
 
 @media screen and (min-width: 768px) {
   #rule {
-    grid-column-start: 4;
+    grid-column-start: 6;
+    grid-column-end: 6;
     grid-row-start: 1;
     grid-row-end: 3;
   }
 }
 
-.tab {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  list-style: none;
-  padding-bottom: var(--space-1);
-  border-bottom: 1px solid var(--neutral-color-1);
-  width: max-content;
-  padding-right: var(--space-4);
-}
-
-.tab li:not(
-  :last-child
-) {
-  margin-right: var(--space-2);
-}
-
-.tab li {
-  cursor: pointer;
+#rule li:not(:last-child) {
+  margin-bottom: var(--space-4);
 }

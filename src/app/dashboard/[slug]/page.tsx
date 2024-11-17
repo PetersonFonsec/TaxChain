@@ -1,19 +1,27 @@
 "use client";
 
-import FooterSection from "../../components/sections/footer/footer";
-import Loading from "../../components/loading/loading";
-import List from "../../components/list/list";
-import Box from "../../components/box/box";
-import style from "./dashboard.module.css";
-
 import { DashboardResponse } from "@/app/model/DasboardResponse";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
+import FooterSection from "../../components/sections/footer/footer";
+import Loading from "../../components/loading/loading";
+import style from "./dashboard.module.css";
+
+import DashboardSingle from "@/app/components/sections/dashboards/single/dashboard-single";
+import DashboardGeral from "@/app/components/sections/dashboards/general/dashboard-general";
+
+enum tabs {
+  single = "SINGLE",
+  general = "General",
+}
+
 export default function Dashboard() {
   const params = useParams<{ slug: string }>();
   const [isLoading, toggleLoading] = useState(false);
+
   const [resume, setResume] = useState<DashboardResponse>(null as any);
+  const [currentTab, changeTab] = useState(tabs.general);
 
   useEffect(() => {
     getInfos(params.slug);
@@ -44,47 +52,24 @@ export default function Dashboard() {
       <main className={style.dashboard}>
         <header className={style.header}>
           <h1 className="title">Resumo suas operações</h1>
+
+          <ul className={style.tab}>
+            <li
+              onClick={() => changeTab(tabs.single)}
+              className={currentTab === tabs.single ? "active text" : "text"}
+            >
+              Visão por moeda
+            </li>
+            <li
+              onClick={() => changeTab(tabs.general)}
+              className={currentTab === tabs.general ? "active text" : "text"}
+            >
+              Geral
+            </li>
+          </ul>
         </header>
 
-        <section>
-          <div id={style.aside} className={style.container}>
-            <Box title="quantidade de trades feitas">{resume?.totalTrades}</Box>
-
-            <Box title="Quantidade de rejuizo Total">
-              {resume?.lucroPrejuizoTotal.toFixed(2)}
-            </Box>
-
-            <Box title="lucroPrejuizoTotal">
-              {resume?.maiorPrejuizo.toFixed(2)}
-            </Box>
-          </div>
-
-          <div id={style.container}>
-            {resume?.taxasTotais && (
-              <List
-                list={resume.taxasTotais}
-                title="Quais moedas mais deram lucro"
-              />
-            )}
-
-            {resume?.taxasTotais && (
-              <List
-                list={resume.taxasTotais}
-                title="Quantidade Total de taxas pagas"
-              />
-            )}
-          </div>
-
-          <div id={style.rule} className={style.container}>
-            <div className={style.box}>
-              <span className="text">
-                Com base no extrato submetido, você não tem a necessidade de
-                declarar as suas criptos no imposto de renda, pois a suas vendas
-                não superam 35 mil reais dentro de um mês.
-              </span>
-            </div>
-          </div>
-        </section>
+        {currentTab === tabs.single ? <DashboardSingle resume={resume}/> : <DashboardGeral resume={resume}/>}
 
         {isLoading ? <Loading /> : ""}
       </main>
