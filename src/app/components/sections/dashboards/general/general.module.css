@@ -1,6 +1,13 @@
 :root {
   --margin: 8px;
-  --box-size: calc((100% / 6) - var(--margin));
+  --box-size: calc(50% - var(--margin));
+}
+
+@media screen and (min-width: 768px) {
+  :root {
+    --margin: 8px;
+    --box-size: calc((100% / 6) - var(--margin));
+  }
 }
 
 #general {
