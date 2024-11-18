@@ -44,6 +44,7 @@
   --border-radius-2: 12px;
   --border-radius-3: 20px;
 
+  --grid-sm: 896px;
   --grid: 1060px;
 
   --transition: 0.2s linear all;
