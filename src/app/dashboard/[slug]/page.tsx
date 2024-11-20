@@ -25,7 +25,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     getInfos(params.slug);
-  }, []);
+  }, [params.slug]);
 
   async function getInfos(slug: string) {
     const form = new FormData();
@@ -69,7 +69,8 @@ export default function Dashboard() {
           </ul>
         </header>
 
-        {currentTab === tabs.single ? <DashboardSingle resume={resume}/> : <DashboardGeral resume={resume}/>}
+        {currentTab === tabs.single ? <DashboardSingle resume={resume}/> : <DashboardGeral />}
+        {/* {currentTab === tabs.single ? <DashboardSingle resume={resume}/> : <DashboardGeral resume={resume}/>} */}
 
         {isLoading ? <Loading /> : ""}
       </main>

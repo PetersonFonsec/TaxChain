@@ -6,7 +6,7 @@ export default function ChartBar() {
   const colors: string[] = ["#02B2AF", "#72CCFF", "#F0B90B"];
   return (
     <BarChart
-      sx={(theme) => ({
+      sx={() => ({
         [`.${axisClasses.root}`]: {
           [`.${axisClasses.tick}, .${axisClasses.line}`]: {
             stroke: "#fff",

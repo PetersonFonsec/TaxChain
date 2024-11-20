@@ -48,6 +48,14 @@
   --grid: 1060px;
 
   --transition: 0.2s linear all;
+
+  --box-size: calc(50% - var(--space-1));
+}
+
+@media screen and (min-width: 768px) {
+  :root {
+    --box-size: calc((100% / 6) - var(--space-1));
+  }
 }
 
 @media screen and (min-width: 780px) {

@@ -3,15 +3,15 @@
 import style from "./general.module.css";
 
 import Box from "@/app/components/box/box";
-import { DashboardResponse } from "@/app/model/DasboardResponse";
+// import { DashboardResponse } from "@/app/model/DasboardResponse";
 import ChartBar from "@/app/components/chart-bar/chart-bar";
 import PieAnimation from "@/app/components/chart-donuts/chart-donuts";
 
-interface DashboardGeneral {
-  resume: DashboardResponse;
-}
+// interface DashboardGeneral {
+//   resume: DashboardResponse;
+// }
 
-export default function DashboardGeral({ resume }: DashboardGeneral) {
+export default function DashboardGeral() {
   return (
     <section id={style.general}>
       <div className={style.box}>
